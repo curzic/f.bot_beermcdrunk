@@ -37,7 +37,7 @@ controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
             type: 'postback',
             text: 'Cats',
             payload: 'show_cat'
-          }
+          },
           {
             type: 'postback',
             text: 'Dogs',
