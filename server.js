@@ -60,7 +60,7 @@ controller.on('facebook_postback', function (bot, message) {
         }
       }
     })
-    break;
+    break
   case 'show_dog':
     bot.reply(message, {
       attachement: {
@@ -70,8 +70,6 @@ controller.on('facebook_postback', function (bot, message) {
         }
       }
     })
-    
-    break;
-  default:
+    break
   }  
 })
