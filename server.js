@@ -24,6 +24,7 @@ controller.setupWebserver(port, function(err, webserver){
 })
 
 controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
+  console.log("message has been received")
   bot.reply(message, 'Hello!')
   bot.reply(message, 'I want to show you something.')
   bot.reply(message, {
