@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/curzic/f.bot_beermcdrunk.git"
   },
+  "dependencies": {
+    "botkit": "0.1.2"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
