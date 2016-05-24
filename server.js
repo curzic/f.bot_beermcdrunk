@@ -5,9 +5,9 @@ var verifyToken = process.env.FACEBOOK_VERIFY_TOKEN
 
 var port = provess.env.PORT
 
-if (!accessToken) = throw new error('FACEBOOK_PAGE_ACCESS_TOKEN is required but missing')
-if (!verifyToken) = throw new error('FACEBOOK_VERIFY_TOKEN is required but missing')
-if (!port) = throw new error('FACEBOOK_PORT is required but missing')
+if (!accessToken) = throw new Error('FACEBOOK_PAGE_ACCESS_TOKEN is required but missing')
+if (!verifyToken) = throw new Error('FACEBOOK_VERIFY_TOKEN is required but missing')
+if (!port) = throw new Error('FACEBOOK_PORT is required but missing')
 
 var controller = Botkit.facebookbot({
   access_token: accessToken;
