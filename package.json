@@ -1,1 +1,19 @@
-
+{
+  "name": "f.bot_beermcdrunk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified \" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/curzic/f.bot_beermcdrunk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/curzic/f.bot_beermcdrunk/issues"
+  }.
+  "homepage": "https://github.com/curzic/f.bot_beermcdrunk#readme",
+}
