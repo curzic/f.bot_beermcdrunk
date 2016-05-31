@@ -33,22 +33,62 @@ controller.on('message_received', function (bot, message) {
     convo.say('Good day, Dear Sir!');
     convo.say('If I may speak. How can I be of service, Sir?');
     
-    var reply_with_attachments = {
-    'username': 'My bot' ,
-    'text': 'I am well informed on the following topics.',
-    'attachments': [
-      {
-        'fallback': 'To be useful, I need you to invite me in a channel.',
-        'title': 'How can I help you?',
-        'text': 'To be useful, I need you to invite me in a channel ',
-        'color': '#7CD197'
+    var reply_with_attachments =  {
+        attachment: {
+          'type':'template',
+          'payload':{
+           'template_type':'generic',
+           'elements':[
+             {
+               'title':'Classic White T-Shirt',
+               'image_url':'http://petersapparel.parseapp.com/img/item100-thumb.png',
+               'subtitle':'Soft white cotton t-shirt is back in style',
+               'buttons':[
+                 {
+                   'type':'web_url',
+                   'url':'https://petersapparel.parseapp.com/view_item?item_id=100',
+                   'title':'View Item'
+                 },
+                 {
+                   'type':'web_url',
+                   'url':'https://petersapparel.parseapp.com/buy_item?item_id=100',
+                   'title':'Buy Item'
+                 },
+                 {
+                   'type':'postback',
+                   'title':'Bookmark Item',
+                   'payload':'USER_DEFINED_PAYLOAD_FOR_ITEM100'
+                 }
+               ]
+             },
+             {
+               'title':'Classic Grey T-Shirt',
+               'image_url':'http://petersapparel.parseapp.com/img/item101-thumb.png',
+               'subtitle':'Soft gray cotton t-shirt is back in style',
+               'buttons':[
+                 {
+                   'type':'web_url',
+                   'url':'https://petersapparel.parseapp.com/view_item?item_id=101',
+                   'title':'View Item'
+                 },
+                 {
+                   'type':'web_url',
+                   'url':'https://petersapparel.parseapp.com/buy_item?item_id=101',
+                   'title':'Buy Item'
+                 },
+                 {
+                   'type':'postback',
+                   'title':'Bookmark Item',
+                   'payload':'USER_DEFINED_PAYLOAD_FOR_ITEM101'
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
-    ],
-    'icon_url': 'http://lorempixel.com/48/48'
-    }
-    
-    convo.say(reply_with_attachments);
-  })
+      convo.say(reply_with_attachments);
+    });
 });
 
   
