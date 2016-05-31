@@ -43,11 +43,11 @@ controller.hears(['hello', 'hi', 'hey', 'hallo', 'test', 'yo'],'message_received
              {
                'title':'Hacker Pschorr',
                'image_url':'https://upload.wikimedia.org/wikipedia/en/9/9a/HP_Logo_with_Banner.jpg',
-               'subtitle':'A sweet Bavarian beer of high class.',
+               'subtitle':'A sweet Bavarian beer of quality taste.',
                'buttons':[
                  {
                    'type':'postback',
-                   'title':'I love it.',
+                   'title':'I am a sweet person.',
                    'payload':'beer_reply'
                   }
                ]
@@ -59,7 +59,7 @@ controller.hears(['hello', 'hi', 'hey', 'hallo', 'test', 'yo'],'message_received
                'buttons':[
                  {
                    'type':'postback',
-                   'title':'I am classy.',
+                   'title':'I am classy as @#$%&.',
                    'payload':'beer_reply'
                   }
                 ]
