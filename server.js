@@ -47,34 +47,7 @@ controller.on('message_received', function (bot, message) {
     'icon_url': 'http://lorempixel.com/48/48'
     }
     
-    bot.reply(message, reply_with_attachments);
-    bot.reply(message, {
-      attachments: {
-        type: 'template',
-        payload: {
-          'template_type': 'generic',
-          'elements':[
-           {
-             'title':'Choose, peaseant.',
-             'image_url':'http://petersapparel.parseapp.com/img/item100-thumb.png',
-             'subtitle':'Choose something!',
-              'buttons': [
-                {
-                  'type': 'postback',
-                  'text': 'Jobs',
-                  'payload': 'show_jobs'
-                },
-                {
-                  'type': 'postback',
-                  'text': 'Events',
-                  'payload': 'show_events'
-                }
-              ]
-            }  
-          ]
-        }
-      }
-    })
+    convo.say(reply_with_attachments);
   })
 });
 
