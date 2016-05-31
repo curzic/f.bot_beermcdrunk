@@ -23,11 +23,17 @@ controller.setupWebserver(port, function(err, webserver){
   })
 })
 
+// bot receives message from user
 controller.on('message_received', function (bot, message) {
-  console.log("message has been received")
-  bot.reply(message, 'Good day, Dear Sir!')
-  bot.reply(message, 'If I may speak. How can I be of service, Sir?')
-  var reply_with_attachments = {
+  console.log("Message has been received")
+  
+  // start a conversation to handle this response
+  bot.startConversation(message,function(err,convo) {
+    
+    convo.say('Good day, Dear Sir!');
+    convo.say('If I may speak. How can I be of service, Sir?');
+    
+    var reply_with_attachments = {
     'username': 'My bot' ,
     'text': 'I am well informed on the following topics.',
     'attachments': [
@@ -40,36 +46,39 @@ controller.on('message_received', function (bot, message) {
     ],
     'icon_url': 'http://lorempixel.com/48/48'
     }
-
-  bot.reply(message, reply_with_attachments);
-  bot.reply(message, {
-    attachment: {
-      type: 'template',
-      payload: {
-        'template_type': 'generic',
-        'elements':[
-         {
-           'title':'Choose, peaseant.',
-           'image_url':'http://petersapparel.parseapp.com/img/item100-thumb.png',
-           'subtitle':'Choose something!',
-            'buttons': [
-              {
-                'type': 'postback',
-                'text': 'Jobs',
-                'payload': 'show_jobs'
-              },
-              {
-                'type': 'postback',
-                'text': 'Events',
-                'payload': 'show_events'
-              }
-            ]
-          }  
-        ]
+    
+    bot.reply(message, reply_with_attachments);
+    bot.reply(message, {
+      attachment: {
+        type: 'template',
+        payload: {
+          'template_type': 'generic',
+          'elements':[
+           {
+             'title':'Choose, peaseant.',
+             'image_url':'http://petersapparel.parseapp.com/img/item100-thumb.png',
+             'subtitle':'Choose something!',
+              'buttons': [
+                {
+                  'type': 'postback',
+                  'text': 'Jobs',
+                  'payload': 'show_jobs'
+                },
+                {
+                  'type': 'postback',
+                  'text': 'Events',
+                  'payload': 'show_events'
+                }
+              ]
+            }  
+          ]
+        }
       }
-    }
+    })
   })
-})
+});
+
+  
 
 controller.on('facebook_postback', function (bot, message) {
   switch(message.payload){
