@@ -31,19 +31,25 @@ controller.on('message_received', function (bot, message) {
     attachement: {
       type: 'template',
       payload: {
-        'template_type': 'button',
-        text: 'Which do you prefer?',
-        buttons: [
-          {
-            type: 'postback',
-            text: 'Jobs',
-            payload: 'show_jobs'
-          },
-          {
-            type: 'postback',
-            text: 'Events',
-            payload: 'show_events'
-          }
+        'template_type': 'generic',
+        'elements':[
+         {
+           'title':'Choose, peaseant.',
+           'image_url':'http://petersapparel.parseapp.com/img/item100-thumb.png',
+           'subtitle':'Choose something!',
+            'buttons': [
+              {
+                'type': 'postback',
+                'text': 'Jobs',
+                'payload': 'show_jobs'
+              },
+              {
+                'type': 'postback',
+                'text': 'Events',
+                'payload': 'show_events'
+              }
+            ]
+          }  
         ]
       }
     }
