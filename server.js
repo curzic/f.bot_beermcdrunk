@@ -24,7 +24,7 @@ controller.setupWebserver(port, function(err, webserver){
 })
 
 // bot receives message from user
-controller.on('message_received', function (bot, message) {
+controller.hears(['hello', 'hi', 'hey', 'hallo', 'test', 'yo'],'message_received', function (bot, message) {
   console.log("Message has been received")
   
   // start a conversation to handle this response
