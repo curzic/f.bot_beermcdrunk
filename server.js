@@ -59,7 +59,7 @@ controller.hears(['hello', 'hi', 'hey', 'hallo', 'test', 'yo'],'message_received
                'buttons':[
                  {
                    'type':'postback',
-                   'title':'I\'m classy as @#$%&.',
+                   'title':'I am classy as @#$%.',
                    'payload':'beer_reply'
                   }
                 ]
