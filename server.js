@@ -27,6 +27,21 @@ controller.on('message_received', function (bot, message) {
   console.log("message has been received")
   bot.reply(message, 'Hello! Welcome to motius')
   bot.reply(message, 'What do you want to ask?')
+  var reply_with_attachments = {
+    'username': 'My bot' ,
+    'text': 'This is a pre-text',
+    'attachments': [
+      {
+        'fallback': 'To be useful, I need you to invite me in a channel.',
+        'title': 'How can I help you?',
+        'text': 'To be useful, I need you to invite me in a channel ',
+        'color': '#7CD197'
+      }
+    ],
+    'icon_url': 'http://lorempixel.com/48/48'
+    }
+
+  bot.reply(message, reply_with_attachments);
   bot.reply(message, {
     attachement: {
       type: 'template',
