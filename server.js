@@ -25,11 +25,11 @@ controller.setupWebserver(port, function(err, webserver){
 
 controller.on('message_received', function (bot, message) {
   console.log("message has been received")
-  bot.reply(message, 'Hello! Welcome to motius')
-  bot.reply(message, 'What do you want to ask?')
+  bot.reply(message, 'Good day, Dear Sir!')
+  bot.reply(message, 'If I may speak. How can I be of service, Sir?')
   var reply_with_attachments = {
     'username': 'My bot' ,
-    'text': 'This is a pre-text',
+    'text': 'I am well informed on the following topics.',
     'attachments': [
       {
         'fallback': 'To be useful, I need you to invite me in a channel.',
