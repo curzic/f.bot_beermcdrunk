@@ -49,7 +49,7 @@ controller.on('message_received', function (bot, message) {
     
     bot.reply(message, reply_with_attachments);
     bot.reply(message, {
-      attachment: {
+      attachments: {
         type: 'template',
         payload: {
           'template_type': 'generic',
