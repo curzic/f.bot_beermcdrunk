@@ -32,6 +32,7 @@ controller.on('message_received', function (bot, message) {
     
     convo.say('Good day, Dear Sir!');
     convo.say('If I may speak. How can I be of service, Sir?');
+    convo.say('Sir, which beer is more of your pleasing?');
     
     var reply_with_attachments =  {
         attachment: {
@@ -40,46 +41,26 @@ controller.on('message_received', function (bot, message) {
            'template_type':'generic',
            'elements':[
              {
-               'title':'Classic White T-Shirt',
-               'image_url':'http://petersapparel.parseapp.com/img/item100-thumb.png',
-               'subtitle':'Soft white cotton t-shirt is back in style',
+               'title':'Hacker Pschorr',
+               'image_url':'https://upload.wikimedia.org/wikipedia/en/9/9a/HP_Logo_with_Banner.jpg',
+               'subtitle':'A sweet Bavarian beer of high class.',
                'buttons':[
                  {
-                   'type':'web_url',
-                   'url':'https://petersapparel.parseapp.com/view_item?item_id=100',
-                   'title':'View Item'
-                 },
-                 {
-                   'type':'web_url',
-                   'url':'https://petersapparel.parseapp.com/buy_item?item_id=100',
-                   'title':'Buy Item'
-                 },
-                 {
                    'type':'postback',
-                   'title':'Bookmark Item',
-                   'payload':'USER_DEFINED_PAYLOAD_FOR_ITEM100'
-                 }
+                   'title':'I love it.',
+                   'payload':'beer_reply'
+                  }
                ]
              },
              {
-               'title':'Classic Grey T-Shirt',
-               'image_url':'http://petersapparel.parseapp.com/img/item101-thumb.png',
-               'subtitle':'Soft gray cotton t-shirt is back in style',
+               'title':'Paulaner',
+               'image_url':'https://www.paulaner.com/sites/all/themes/paulaner/img/paulaner_logo.png',
+               'subtitle':'A classic. Like you.',
                'buttons':[
                  {
-                   'type':'web_url',
-                   'url':'https://petersapparel.parseapp.com/view_item?item_id=101',
-                   'title':'View Item'
-                 },
-                 {
-                   'type':'web_url',
-                   'url':'https://petersapparel.parseapp.com/buy_item?item_id=101',
-                   'title':'Buy Item'
-                 },
-                 {
                    'type':'postback',
-                   'title':'Bookmark Item',
-                   'payload':'USER_DEFINED_PAYLOAD_FOR_ITEM101'
+                   'title':'I am classy.',
+                   'payload':'beer_reply'
                   }
                 ]
               }
@@ -94,26 +75,5 @@ controller.on('message_received', function (bot, message) {
   
 
 controller.on('facebook_postback', function (bot, message) {
-  switch(message.payload){
-  case 'show_jobs':
-    bot.reply(message, {
-      attachement: {
-        type: 'image',
-        payload: {
-          url:'http://i.giphy.com/pcC2u7rl89b44.gif'
-        }
-      }
-    })
-    break
-  case 'show_events':
-    bot.reply(message, {
-      attachement: {
-        type: 'image',
-        payload: {
-          url:'http://i.giphy.com/9gn4lhW6wiQ6c.gif'
-        }
-      }
-    })
-    break
-  }  
+  bot.reply(message, "If I may say, good choice, Sir!")
 })
