@@ -23,10 +23,10 @@ controller.setupWebserver(port, function(err, webserver){
   })
 })
 
-controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
+controller.on('message_received', function (bot, message) {
   console.log("message has been received")
-  bot.reply(message, 'Hello!')
-  bot.reply(message, 'I want to show you something.')
+  bot.reply(message, 'Hello! Welcome to motius')
+  bot.reply(message, 'What do you want to ask?')
   bot.reply(message, {
     attachement: {
       type: 'template',
@@ -36,13 +36,13 @@ controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
         buttons: [
           {
             type: 'postback',
-            text: 'Cats',
-            payload: 'show_cat'
+            text: 'Jobs',
+            payload: 'show_jobs'
           },
           {
             type: 'postback',
-            text: 'Dogs',
-            payload: 'show_dog'
+            text: 'Events',
+            payload: 'show_events'
           }
         ]
       }
@@ -52,7 +52,7 @@ controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
 
 controller.on('facebook_postback', function (bot, message) {
   switch(message.payload){
-  case 'show_cat':
+  case 'show_jobs':
     bot.reply(message, {
       attachement: {
         type: 'image',
@@ -62,7 +62,7 @@ controller.on('facebook_postback', function (bot, message) {
       }
     })
     break
-  case 'show_dog':
+  case 'show_events':
     bot.reply(message, {
       attachement: {
         type: 'image',
