@@ -118,43 +118,43 @@ controller.on('facebook_postback', function (bot, message) {
         
         // EOC (End of Conversation) cases
         case 'eoc_q0':
-            bot.say(message, 'I hope to hear from you again soon! Have a nice day.');
+            bot.say('I hope to hear from you again soon! Have a nice day.');
             break;
         
         case 'eoc_q1':
-            bot.say(message, 'This feature will be available soon.');
+            bot.say('This feature will be available soon.');
             break;
             
         case 'eoc_q2':
-            bot.say(message, 'Sure!');
-            bot.say(message, reply_faq);
+            bot.say('Sure!');
+            bot.say(reply_faq);
             break;
                     
           
         // FAQ (Frequently Asked Questions) cases
         case 'faq_q0':
-            bot.say(message, 'What else can I help you with?');
-            bot.say(message, reply_eoc);
+            bot.say('What else can I help you with?');
+            bot.say(reply_eoc);
             break;
             
         case 'faq_q1':
-            bot.say(message, 'The answers is 42.');
-            bot.say(message, reply_faq_extend);
+            bot.say('The answers is 42.');
+            bot.say(reply_faq_extend);
             break;
             
         case 'faq_q2':
-            bot.say(message, 'The answer is not 42.');
-            bot.say(message, reply_faq_extend);
+            bot.say('The answer is not 42.');
+            bot.say(reply_faq_extend);
             break;
         
         
         // FAQ_Extend cases
         case 'faq_extend_q0':
-            bot.say(message, reply_eoc);
+            bot.say(reply_eoc);
             break;
             
         case 'faq_extend_q1':
-            bot.say(message, reply_faq);
+            bot.say(reply_faq);
             break;
           
          // Default case          
