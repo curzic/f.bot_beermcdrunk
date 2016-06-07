@@ -110,7 +110,6 @@ controller.hears('faq','message_received', function (bot, message) {
     convo.say('Here are our FAQs.');
     convo.say(reply_faq);
     });
-});
 
 // Bot receives click on buttons
 controller.on('facebook_postback', function (bot, message) {
@@ -161,6 +160,6 @@ controller.on('facebook_postback', function (bot, message) {
         default:
             bot.say(reply_eoc);
             break;
-       }
-      
-})
+        }
+    })
+});
