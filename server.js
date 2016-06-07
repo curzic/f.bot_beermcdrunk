@@ -114,12 +114,12 @@ controller.hears(['job'],'message_received', function(bot, message){
 	sendJobs = function(response, convo) {
 		var res = response.split(" ");
 		var test=0;
-		foreach(tech in res){
-			foreach(job in jobs){
-				if(job.fields.technologies.indexOf(tech) > -1)
+		for (var i in res) {
+			for (var j in jobs){
+				if(jobs[j].fields.technologies.indexOf(res[i]) > -1)
 				{
 					test=1;
-					msgTemplate=createMsgTemplate(job);
+					msgTemplate=createMsgTemplate(jobs[j]);
 				}
 			}
 		}
