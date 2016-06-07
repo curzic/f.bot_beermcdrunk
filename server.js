@@ -1,4 +1,5 @@
 var Botkit = require('botkit')
+var jobs = require('/data/jobs.json');
 
 var accessToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN
 var verifyToken = process.env.FACEBOOK_VERIFY_TOKEN
@@ -72,7 +73,63 @@ controller.hears(['hello', 'hi', 'hey', 'hallo', 'test', 'yo'],'message_received
     });
 });
 
-  
+controller.hears(['job'],'message_received', function(bot, message){
+	var reply_job_attachments =  {
+        attachment: {
+          'type':'template',
+          'payload':{
+           'template_type':'generic',
+           'elements':[
+            ]
+          }
+        }
+      };
+	sendJobs = function(response, convo) {
+		var res = response.split(" ");
+		var test=0;
+		foreach(tech in res){
+			foreach(job in jobs){
+				if(job.fields.technologies.indexOf(tech) > -1)
+				{
+					test=1;
+					msgTemplate=createMsgTemplate(job);
+				}
+			}
+		}
+		if(test ==0){
+			convo.say("Sorry no jobs");
+		}else{
+			convo.say(reply_job_attachments);
+		}
+		
+	}
+
+	createMsgTemplate = function(job){
+		var element = {
+               'title':job.fields.title,
+               'image_url':'https://upload.wikimedia.org/wikipedia/en/9/9a/HP_Logo_with_Banner.jpg',
+               'subtitle':job.fields.description,
+               'buttons':[
+                 {
+                   'type':'postback',
+                   'title':'Know more',
+                   'payload':'job_ID'+job.pk
+                  }
+               ]
+             };
+         reply_job_attachments.attachment.payload.elements.push(element);
+	}
+
+	askFlavor = function(response, convo) {
+      convo.ask('Thanks for your interest in our job postings. Please enter the technologies you are interested in. I will try to sort out the jobs for you', function(response, convo) {
+        convo.say('Awesome. Here are the jobs related to your interest.');
+        sendJobs(response, convo);
+        convo.next();
+      });
+    }
+
+	bot.startConversation(message,askFlavor);
+});
 
 controller.on('facebook_postback', function (bot, message) {
   bot.reply(message, "If I may say, good choice, Sir!")
