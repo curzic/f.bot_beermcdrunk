@@ -35,17 +35,17 @@ var reply_faq =  {
                 {
                     'type':'postback',
                     'title':'I need something else.',
-                    'payload':'faq_q0'
+                    'payload':'f_q0'
                 },
                 {
                     'type':'postback',
                     'title':'What is the answer to life, universe and everything?',
-                    'payload':'faq_q1'
+                    'payload':'f_q1'
                 },
                 {
                     'type':'postback',
                     'title':'What is not the answer to life universe and everything?',
-                    'payload':'faq_q2'
+                    'payload':'f_q2'
                 }
             ]
         }
@@ -87,12 +87,12 @@ var reply_faq_extend = {
                 {
                     'type':'postback',
                     'title':'No, thanks.',
-                    'payload':'faq_extend_q0'
+                    'payload':'f_extend_q0'
                 },
                 {
                     'type':'postback',
                     'title':'Yes, please.',
-                    'payload':'faq_extend_q1'
+                    'payload':'f_extend_q1'
                 }
             ]
         }
@@ -132,28 +132,28 @@ controller.on('facebook_postback', function (bot, message) {
                     
           
         // FAQ (Frequently Asked Questions) cases
-        case 'faq_q0':
+        case 'f_q0':
             bot.say('What else can I help you with?');
             bot.say(reply_eoc);
             break;
             
-        case 'faq_q1':
+        case 'f_q1':
             bot.say('The answers is 42.');
             bot.say(reply_faq_extend);
             break;
             
-        case 'faq_q2':
+        case 'f_q2':
             bot.say('The answer is not 42.');
             bot.say(reply_faq_extend);
             break;
         
         
         // FAQ_Extend cases
-        case 'faq_extend_q0':
+        case 'f_extend_q0':
             bot.say(reply_eoc);
             break;
             
-        case 'faq_extend_q1':
+        case 'f_extend_q1':
             bot.say(reply_faq);
             break;
           
