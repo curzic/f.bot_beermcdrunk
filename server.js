@@ -156,7 +156,8 @@ controller.hears(['job'],'message_received', function(bot, message){
     }
 
 	bot.startConversation(message,askFlavor);
-});
+})
+
 // Bot receives message from user
 controller.hears('faq','message_received', function (bot, message) {
   console.log("Message has been received: faq")
@@ -167,7 +168,7 @@ controller.hears('faq','message_received', function (bot, message) {
     convo.say(reply_faq);
     convo.say('convo');
     });
-});
+})
 
 // Bot receives click on buttons
 controller.on('postback', function (bot, message) {
@@ -221,4 +222,4 @@ controller.on('postback', function (bot, message) {
             bot.say(reply_eoc);
             break;
     }
-});
+})
