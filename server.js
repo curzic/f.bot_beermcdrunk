@@ -109,11 +109,12 @@ controller.hears('faq','message_received', function (bot, message) {
   bot.startConversation(message,function(err,convo) {
     convo.say('Here are our FAQs.');
     convo.say(reply_faq);
+    convo.say('convo');
     });
 });
 
 // Bot receives click on buttons
-controller.on('facebook_postback', function (bot, message) {
+controller.on('postback', function (bot, message) {
     bot.say('test');
     
     switch (message){
