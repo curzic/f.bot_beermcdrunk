@@ -23,57 +23,144 @@ controller.setupWebserver(port, function(err, webserver){
   })
 })
 
-// bot receives message from user
-controller.hears(['hello', 'hi', 'hey', 'hallo', 'test', 'yo'],'message_received', function (bot, message) {
-  console.log("Message has been received")
-  
-  // start a conversation to handle this response
-  bot.startConversation(message,function(err,convo) {
-    
-    convo.say('Good day, Dear Sir!');
-    convo.say('If I may speak. How can I be of service, Sir?');
-    convo.say('Sir, which beer is more of your pleasing?');
-    
-    var reply_with_attachments =  {
-        attachment: {
-          'type':'template',
-          'payload':{
-           'template_type':'generic',
-           'elements':[
-             {
-               'title':'Hacker Pschorr',
-               'image_url':'https://upload.wikimedia.org/wikipedia/en/9/9a/HP_Logo_with_Banner.jpg',
-               'subtitle':'A sweet Bavarian beer of quality taste.',
-               'buttons':[
-                 {
-                   'type':'postback',
-                   'title':'I am a sweet person.',
-                   'payload':'beer_reply'
-                  }
-               ]
-             },
-             {
-               'title':'Paulaner',
-               'image_url':'https://www.paulaner.com/sites/all/themes/paulaner/img/paulaner_logo.png',
-               'subtitle':'A classic. Like you.',
-               'buttons':[
-                 {
-                   'type':'postback',
-                   'title':'I am classy as @#$%.',
-                   'payload':'beer_reply'
-                  }
-                ]
-              }
+
+// Templates for conversations
+var reply_faq =  {
+    attachment: {
+        'type':'template',
+        'payload':{
+            'template_type':'button',
+            'text':'What would you like to know?',
+            'buttons':[
+                {
+                    'type':'postback',
+                    'title':'I need something else.',
+                    'payload':'faq_q0'
+                },
+                {
+                    'type':'postback',
+                    'title':'What is the answer to life, universe and everything?',
+                    'payload':'faq_q1'
+                },
+                {
+                    'type':'postback',
+                    'title':'What is not the answer to life universe and everything?',
+                    'payload':'faq_q2'
+                }
             ]
-          }
         }
-      }
-      convo.say(reply_with_attachments);
+    }
+}
+var reply_eoc =  {
+    attachment: {
+        'type':'template',
+        'payload':{
+            'template_type':'button',
+            'text':'Is there anything else I can help you with?',
+            'buttons':[
+                {
+                    'type':'postback',
+                    'title':'That is all for now.',
+                    'payload':'eoc_q0'
+                },
+                {
+                    'type':'postback',
+                    'title':'What jobs are currently available?',
+                    'payload':'eoc_q1'
+                },
+                {
+                    'type':'postback',
+                    'title':'I need to see the FAQ.',
+                    'payload':'eoc_q2'
+                }
+            ]
+        }
+    }
+}
+var reply_faq_extend = {
+    attachment: {
+        'type':'template',
+        'payload':{
+            'template_type':'button',
+            'text':'Do you have another frequently asked question?',
+            'buttons':[
+                {
+                    'type':'postback',
+                    'title':'No, thanks.',
+                    'payload':'faq_extend_q0'
+                },
+                {
+                    'type':'postback',
+                    'title':'Yes, please.',
+                    'payload':'faq_extend_q1'
+                }
+            ]
+        }
+    }
+}
+
+
+
+// Bot receives message from user
+controller.hears('faq','message_received', function (bot, message) {
+  console.log("Message has been received: faq")
+  
+  // Start a conversation to handle this response
+  bot.startConversation(message,function(err,convo) {
+    convo.say('Here are our FAQs.');
+    convo.say(reply_faq);
     });
 });
 
-  
-
+// Bot receives click on buttons
 controller.on('facebook_postback', function (bot, message) {
-  bot.reply(message, "If I may say, good choice, Sir!")
+    switch (message){
+        
+        // EOC (End of Conversation) cases
+        case 'eoc_q0':
+            bot.say(message, 'I hope to hear from you again soon! Have a nice day.');
+            break;
+        
+        case 'eoc_q1':
+            bot.say(message, 'This feature will be available soon.');
+            break;
+            
+        case 'eoc_q2':
+            bot.say(message, 'Sure!');
+            bot.say(message, reply_faq);
+            break;
+                    
+          
+        // FAQ (Frequently Asked Questions) cases
+        case 'faq_q0':
+            bot.say(message, 'What else can I help you with?');
+            bot.say(message, reply_eoc);
+            break;
+            
+        case 'faq_q1':
+            bot.say(message, 'The answers is 42.');
+            bot.say(message, reply_faq_extend);
+            break;
+            
+        case 'faq_q2':
+            bot.say(message, 'The answer is not 42.');
+            bot.say(message, reply_faq_extend);
+            break;
+        
+        
+        // FAQ_Extend cases
+        case 'faq_extend_q0':
+            bot.say(message, reply_eoc);
+            break;
+            
+        case 'faq_extend_q1':
+            bot.say(message, reply_faq);
+            break;
+          
+         // Default case          
+        default:
+            bot.say(reply_eoc);
+            break;
+       }
+      
 })
