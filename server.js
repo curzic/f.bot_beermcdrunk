@@ -101,7 +101,7 @@ var reply_faq_extend = {
 }
 
 controller.hears(['job'],'message_received', function(bot, message){
-	var reply_job_attachments =  {
+	/*var reply_job_attachments =  {
         attachment: {
           'type':'template',
           'payload':{
@@ -145,13 +145,13 @@ controller.hears(['job'],'message_received', function(bot, message){
                ]
              };
          reply_job_attachments.attachment.payload.elements.push(element);
-	}
+	}*/
 
 	askFlavor = function(response, convo) {
       convo.ask('Thanks for your interest in our job postings. Please enter the technologies you are interested in. I will try to sort out the jobs for you', function(response, convo) {
         convo.say('Awesome. Here are the jobs related to your interest.');
-        sendJobs(response, convo);
-        convo.next();
+        //sendJobs(response, convo);
+        //convo.next();
       });
     }
 
